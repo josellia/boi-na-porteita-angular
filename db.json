@@ -1,0 +1,14 @@
+{
+    "cows": [
+        {
+           "breed": "Nelore",
+           "photoUrl": "https://images.pexels.com/photos/5669011/pexels-photo-5669011.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+           "description": "Nelore mocho ",
+           "gender": "Macho",
+           "birthDate": "19/08/2021",
+           "price": "300",
+           "id": 1
+
+        }
+    ]
+}
