@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ValidantionErrorsService } from 'src/app/shared/components/validators/validantion-errors.service';
 
 @Component({
   selector: 'app-cadastro-boi',
@@ -9,11 +10,10 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 export class CadastroBoiComponent implements OnInit {
   formData!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(public validationErrors: ValidantionErrorsService,
+    private fb: FormBuilder) {}
 
-  // get f(){
-  //  return  this.formData.controls;
-  // }
+
   get f(): { [key: string]: AbstractControl; }
   {
       return this.formData.controls;
