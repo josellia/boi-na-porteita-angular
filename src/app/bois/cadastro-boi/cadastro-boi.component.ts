@@ -33,7 +33,7 @@ export class CadastroBoiComponent implements OnInit {
       description: ['', [Validators.maxLength(200)]],
       birthDate: ['', [Validators.required]],
       gender: ['', [Validators.required]],
-      price: [0, [Validators.required]],
+      price: [0, [Validators.required, Validators.min(0)]],
     });
   }
 
