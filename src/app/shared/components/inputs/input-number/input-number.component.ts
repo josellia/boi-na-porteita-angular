@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-input-number',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./input-number.component.css']
 })
 export class InputNumberComponent implements OnInit {
-
+  @Input() mask!: (value: string) => string;
   constructor() { }
 
   ngOnInit(): void {
