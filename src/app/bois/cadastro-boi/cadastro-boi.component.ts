@@ -12,7 +12,7 @@ export class CadastroBoiComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   // get f(){
-  //  return  this.formCow.controls;
+  //  return  this.formData.controls;
   // }
   get f(): { [key: string]: AbstractControl; }
   {

@@ -11,8 +11,28 @@
             formControlName="breed"
           />
           <mat-error
-            *ngIf="(formData.touched || formData.dirty) && f['breed'].errors"
-            >Mensagem de erro</mat-error
+            *ngIf="
+              (formData.touched || formData.dirty) &&
+              f['breed'].errors &&
+              f['breed'].errors['required']
+            "
+            >O campo é obrigatório</mat-error
+          >
+          <mat-error
+            *ngIf="
+              (formData.touched || formData.dirty) &&
+              f['breed'].errors &&
+              f['breed'].errors['minlength']
+            "
+            >O campo deve ter no mínimo 3 caracteres</mat-error
+          >
+          <mat-error
+            *ngIf="
+              (formData.touched || formData.dirty) &&
+              f['breed'].errors &&
+              f['breed'].errors['maxlength']
+            "
+            >O campo deve ter no máximo 30 caracteres</mat-error
           >
         </mat-form-field>
         <mat-form-field class="full-width">
