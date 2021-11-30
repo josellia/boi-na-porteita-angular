@@ -1,12 +1,22 @@
-<mat-form-field class="full-width">
-  <input matInput placeholder="Raça" name="breed" formControlName="breed" />
-  <mat-error *ngIf="validationErrors.hasErrorValidate(f['breed'], 'required')"
-    >O campo é obrigatório</mat-error
-  >
-  <mat-error *ngIf="validationErrors.hasErrorValidate(f['breed'], 'minlength')"
-    >O campo deve ter no mínimo 3 caracteres</mat-error
-  >
-  <mat-error *ngIf="validationErrors.hasErrorValidate(f['breed'], 'maxlength')"
-    >O campo deve ter no máximo 30 caracteres</mat-error
-  >
-</mat-form-field>
+<div [formGroup]="formGroup">
+  <mat-form-field class="full-width">
+    <input
+      matInput
+      [placeholder]="inputPlaceholder"
+      [name]="controlName"
+      [formControlName]="controlName"
+    />
+    <mat-error
+      *ngIf="validationErrors.hasErrorValidate(formControl, 'required')"
+      >O campo é obrigatório</mat-error
+    >
+    <mat-error
+      *ngIf="validationErrors.hasErrorValidate(formControl, 'minlength')"
+      >O campo deve ter no mínimo 3 caracteres</mat-error
+    >
+    <mat-error
+      *ngIf="validationErrors.hasErrorValidate(formControl, 'maxlength')"
+      >O campo deve ter no máximo 30 caracteres</mat-error
+    >
+  </mat-form-field>
+</div>

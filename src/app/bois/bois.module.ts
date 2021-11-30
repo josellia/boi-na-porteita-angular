@@ -4,6 +4,7 @@ import { CadastroBoiComponent } from './cadastro-boi/cadastro-boi.component';
 import { ListarBoisComponent } from './listar-bois/listar-bois.component';
 import {  ReactiveFormsModule } from '@angular/forms';
 import { DemoMaterialModule } from '../shared/Material/material.module';
+import { InputsModule } from '../shared/components/inputs/inputs.module';
 
 
 
@@ -15,8 +16,9 @@ import { DemoMaterialModule } from '../shared/Material/material.module';
   imports: [
     CommonModule,
     ReactiveFormsModule,   
-    DemoMaterialModule
+    DemoMaterialModule,
+    InputsModule
     
-  ]
+  ],
 })
 export class BoisModule { }

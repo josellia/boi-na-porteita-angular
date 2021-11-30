@@ -3,26 +3,12 @@
   <mat-card class="center width50">
     <form [formGroup]="formData" (ngSubmit)="save()">
       <mat-card-content>
-        <mat-form-field class="full-width">
-          <input
-            matInput
-            placeholder="Raça"
-            name="breed"
-            formControlName="breed"
-          />
-          <mat-error
-            *ngIf="validationErrors.hasErrorValidate(f['breed'], 'required')"
-            >O campo é obrigatório</mat-error
-          >
-          <mat-error
-            *ngIf="validationErrors.hasErrorValidate(f['breed'], 'minlength')"
-            >O campo deve ter no mínimo 3 caracteres</mat-error
-          >
-          <mat-error
-            *ngIf="validationErrors.hasErrorValidate(f['breed'], 'maxlength')"
-            >O campo deve ter no máximo 30 caracteres</mat-error
-          >
-        </mat-form-field>
+        <app-input-text
+          inputPlaceholder="Raça"
+          controlName="breed"
+          [formGroup]="formData"
+        ></app-input-text>
+
         <mat-form-field class="full-width">
           <input
             type="number"
