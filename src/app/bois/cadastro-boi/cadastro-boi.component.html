@@ -9,26 +9,21 @@
           [formGroup]="formData"
         ></app-input-text>
 
-        <mat-form-field class="full-width">
-          <input
-            type="number"
-            step="0.1"
-            min="0"
-            max="10"
-            matInput
-            placeholder="Preço"
-            name="price"
-            formControlName="price"
-          />
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <input
-            matInput
-            placeholder="Link Foto"
-            name="photoUrl"
-            formControlName="photoUrl"
-          />
-        </mat-form-field>
+        <app-input-number
+          step="0.1"
+          min="0"
+          max="10"
+          inputPlaceholder="Preço"
+          controlName="price"
+          [formGroup]="formData"
+        ></app-input-number>
+
+        <app-input-text
+          inputPlaceholder="Link Foto"
+          controlName="photoUrl"
+          [formGroup]="formData"
+        ></app-input-text>
+
         <mat-form-field class="full-width">
           <input
             matInput

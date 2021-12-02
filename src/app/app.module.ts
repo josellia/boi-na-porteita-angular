@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app.routing.module';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 
+
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
   imports: [
@@ -17,6 +18,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     DemoMaterialModule,
     BoisModule,
     AppRoutingModule,
+  
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt' }],
   bootstrap: [AppComponent],

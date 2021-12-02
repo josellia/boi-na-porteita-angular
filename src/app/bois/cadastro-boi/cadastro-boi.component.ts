@@ -33,7 +33,7 @@ export class CadastroBoiComponent implements OnInit {
       description: ['', [Validators.maxLength(200)]],
       birthDate: ['', [Validators.required]],
       gender: ['', [Validators.required]],
-      price: [0, [Validators.required, Validators.min(0)]],
+      price: ['', [Validators.required, Validators.min(0)]],
     });
   }
 
@@ -47,5 +47,9 @@ export class CadastroBoiComponent implements OnInit {
   }
   clearForm(): void {
     this.formData.reset();
+  }
+  teste(e:any){
+    
+    console.log(e);
   }
 }

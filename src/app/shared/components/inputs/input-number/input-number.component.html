@@ -1,1 +1,24 @@
-<p>input-number works!</p>
+<div [formGroup]="formGroup">
+  <mat-form-field class="full-width">
+    <input
+      matInput
+      type="number"
+      [step]="step"
+      [min]="min"
+      [max]="max"
+      [placeholder]="inputPlaceholder"
+      [name]="controlName"
+      [formControlName]="controlName"
+      [id]="idInput"
+    />
+  </mat-form-field>
+  <mat-error *ngIf="validationErrors.hasErrorValidate(formControl, 'required')"
+    >O campo é obrigatório</mat-error
+  >
+  <!-- <mat-error *ngIf="validationErrors.hasErrorValidate(formControl, 'minlength')"
+    >O campo deve ter no mínimo 3 caracteres</mat-error
+  >
+  <mat-error *ngIf="validationErrors.hasErrorValidate(formControl, 'maxlength')"
+    >O campo deve ter no máximo 30 caracteres</mat-error
+  > -->
+</div>

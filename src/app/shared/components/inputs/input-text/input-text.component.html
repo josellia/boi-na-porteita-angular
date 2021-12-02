@@ -5,6 +5,7 @@
       [placeholder]="inputPlaceholder"
       [name]="controlName"
       [formControlName]="controlName"
+      [id]="idInput"
     />
     <mat-error
       *ngIf="validationErrors.hasErrorValidate(formControl, 'required')"

@@ -13,6 +13,7 @@ export class InputTextComponent{
  @Input() inputPlaceholder!:string;
  @Input() formGroup!: FormGroup;
  @Input() controlName!: string;
+ 
 
   constructor(public validationErrors: ValidantionErrorsService) { }
 

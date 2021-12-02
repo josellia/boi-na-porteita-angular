@@ -7,8 +7,7 @@ import { InputTextareaComponent } from './input-textarea/input-textarea.componen
 import { InputSelectComponent } from './input-select/input-select.component';
 import { DemoMaterialModule } from '../../Material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
+import { InputMaskModule } from '@ngneat/input-mask';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     DemoMaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    InputMaskModule.forRoot({ isAsync: true }),
   ],
   exports:[
     InputTextComponent,
