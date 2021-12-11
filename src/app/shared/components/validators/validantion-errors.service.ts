@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,5 +19,10 @@ export class ValidantionErrorsService {
   hasError(control: AbstractControl, errorName: string):boolean{
     return control.hasError(errorName)
 
+  }
+  
+  lengthValidation(control: AbstractControl, errorName: string):number{
+    const error = control.errors ? control.errors[errorName] : null;
+    return error.requiredLength || error.min || error.max || 0
   }
 }

@@ -16,9 +16,11 @@
     >O campo é obrigatório</mat-error
   >
   <mat-error *ngIf="validationErrors.hasErrorValidate(formControl, 'min')"
-    >O campo deve ter no mínimo 3 caracteres</mat-error
+    >O campo deve ter no mínimo
+    {{ validationErrors.lengthValidation(formControl, "min") }}</mat-error
   >
   <mat-error *ngIf="validationErrors.hasErrorValidate(formControl, 'max')"
-    >O campo deve ter no máximo 30 caracteres</mat-error
-  >
+    >O campo deve ter no máximo
+    {{ validationErrors.lengthValidation(formControl, "max") }}
+  </mat-error>
 </div>
