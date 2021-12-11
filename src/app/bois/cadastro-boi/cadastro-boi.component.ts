@@ -5,8 +5,6 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { createMask } from '@ngneat/input-mask';
-
 import { ValidantionErrorsService } from 'src/app/shared/components/validators/validantion-errors.service';
 
 @Component({
@@ -17,6 +15,7 @@ import { ValidantionErrorsService } from 'src/app/shared/components/validators/v
 })
 export class CadastroBoiComponent implements OnInit {
   formData!: FormGroup;
+  genders!: Array<string>
 
   constructor(
     public validationErrors: ValidantionErrorsService,
@@ -51,7 +50,7 @@ export class CadastroBoiComponent implements OnInit {
       ],
     });
 
-    // this.currencyMask()
+    this.genders = ['Fêmia', 'Macho'];
     
   }
 

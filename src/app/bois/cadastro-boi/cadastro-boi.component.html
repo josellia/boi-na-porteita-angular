@@ -1,7 +1,12 @@
 <mat-toolbar class="app-title">Cadastrar boi</mat-toolbar>
 <div class="main-div">
   <mat-card class="center width50">
-    <form [formGroup]="formData" (ngSubmit)="save()">
+    <form
+      autocapitalize="off"
+      novalidate
+      [formGroup]="formData"
+      (ngSubmit)="save()"
+    >
       <mat-card-content>
         <app-input-text
           inputPlaceholder="Raça"
@@ -53,6 +58,7 @@
           inputPlaceholder="Gênero"
           controlName="gender"
           [formGroup]="formData"
+          [opcoes]="genders"
         ></app-input-select>
       </mat-card-content>
 

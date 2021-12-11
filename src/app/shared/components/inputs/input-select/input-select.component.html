@@ -4,8 +4,9 @@
       [placeholder]="inputPlaceholder"
       [formControlName]="controlName"
     >
-      <mat-option value="Macho">Macho</mat-option>
-      <mat-option value="Femea">Fêmea</mat-option>
+      <mat-option *ngFor="let opcao of opcoes" [value]="opcao">{{
+        opcao
+      }}</mat-option>
     </mat-select>
     <mat-error
       *ngIf="validationsErrors.hasErrorValidate(formControl, 'required')"
