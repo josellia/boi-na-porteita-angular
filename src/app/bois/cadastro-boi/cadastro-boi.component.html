@@ -42,21 +42,17 @@
           [formGroup]="formData"
         ></app-input-date>
 
-        <mat-form-field class="full-width">
-          <textarea
-            matInput
-            placeholder="Descrição"
-            name="description"
-            formControlName="description"
-          ></textarea>
-        </mat-form-field>
+        <app-input-textarea
+          inputPlaceholder="Descrição"
+          controlName="description"
+          [formGroup]="formData"
+        ></app-input-textarea>
 
-        <mat-form-field class="full-width">
-          <mat-select placeholder="Gênero" formControlName="gender">
-            <mat-option value="Macho">Macho</mat-option>
-            <mat-option value="Femea">Fêmea</mat-option>
-          </mat-select>
-        </mat-form-field>
+        <app-input-select
+          inputPlaceholder="Gênero"
+          controlName="gender"
+          [formGroup]="formData"
+        ></app-input-select>
       </mat-card-content>
 
       <mat-card-actions>

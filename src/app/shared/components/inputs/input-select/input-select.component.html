@@ -1,1 +1,23 @@
-<p>input-select works!</p>
+<div [formGroup]="formGroup">
+  <mat-form-field class="full-width">
+    <mat-select
+      [placeholder]="inputPlaceholder"
+      [formControlName]="controlName"
+    >
+      <mat-option value="Macho">Macho</mat-option>
+      <mat-option value="Femea">Fêmea</mat-option>
+    </mat-select>
+    <mat-error
+      *ngIf="validationsErrors.hasErrorValidate(formControl, 'required')"
+      >O campo é obrigatório</mat-error
+    >
+    <mat-error
+      *ngIf="validationsErrors.hasErrorValidate(formControl, 'minLenth')"
+      >O campo deve ter no mínimo ...</mat-error
+    >
+    <mat-error
+      *ngIf="validationsErrors.hasErrorValidate(formControl, 'maxlength')"
+      >O campo deve ter no máximo 30 caracteres</mat-error
+    >
+  </mat-form-field>
+</div>

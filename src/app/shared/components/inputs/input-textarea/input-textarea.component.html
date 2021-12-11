@@ -1,1 +1,22 @@
-<p>input-textarea works!</p>
+<div [formGroup]="formGroup">
+  <mat-form-field class="full-width">
+    <textarea
+      matInput
+      [placeholder]="inputPlaceholder"
+      [name]="controlName"
+      [formControlName]="controlName"
+    ></textarea>
+    <mat-error
+      *ngIf="validationsErrors.hasErrorValidate(formControl, 'required')"
+      >O campo é obrigatório</mat-error
+    >
+    <mat-error
+      *ngIf="validationsErrors.hasErrorValidate(formControl, 'minLenth')"
+      >O campo deve ter no mínimo ...</mat-error
+    >
+    <mat-error
+      *ngIf="validationsErrors.hasErrorValidate(formControl, 'maxlength')"
+      >O campo deve ter no máximo 30 caracteres</mat-error
+    >
+  </mat-form-field>
+</div>
