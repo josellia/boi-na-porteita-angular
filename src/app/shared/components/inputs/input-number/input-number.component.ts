@@ -1,5 +1,6 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
+
 
 import { ValidantionErrorsService } from '../../validators/validantion-errors.service';
 
@@ -9,14 +10,14 @@ import { ValidantionErrorsService } from '../../validators/validantion-errors.se
   styleUrls: ['./input-number.component.css']
 })
 export class InputNumberComponent implements OnInit {
-  @Output() mask:EventEmitter<string> = new EventEmitter<string>();
+  @Input() inputMask!: any;
   @Input() idInput!:string;
   @Input() inputPlaceholder!:string ;
   @Input() formGroup!: FormGroup;
   @Input() controlName!: string;
-  @Input() min!:string;
+  @Input() min!: string;
   @Input() max!:string;
-  @Input() step!:string;
+  @Input() step!: string;
   
 
   constructor(public validationErrors:ValidantionErrorsService) { }
@@ -28,4 +29,10 @@ export class InputNumberComponent implements OnInit {
     return this.formGroup.controls[this.controlName];
   }
 
+  get maskInput( ){
+    const mask: AbstractControl = this.formGroup.controls[this.controlName];
+    console.log(mask);
+   return  mask;
+
+  }
 }

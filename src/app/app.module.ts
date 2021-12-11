@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -8,6 +8,7 @@ import { BoisModule } from './bois/bois.module';
 import { AppRoutingModule } from './app.routing.module';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 @NgModule({
@@ -18,9 +19,14 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     DemoMaterialModule,
     BoisModule,
     AppRoutingModule,
+    
+    NgxMaskModule.forRoot({
+      dropSpecialCharacters: false // ao salvar, vai manter a mascara
+    }),
   
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt' }],
   bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule {}

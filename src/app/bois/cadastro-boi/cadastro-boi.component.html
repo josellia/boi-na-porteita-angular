@@ -9,13 +9,25 @@
           [formGroup]="formData"
         ></app-input-text>
 
+        <!-- <mat-form-field class="full-width">
+          <input
+            type="number"
+            step="0.1"
+            min="0"
+            max="10"
+            matInput
+            placeholder="Preço teste"
+            name="price"
+            formControlName="price"
+            (change)="teste($event)"
+          />
+        </mat-form-field> -->
         <app-input-number
-          step="0.1"
           min="0"
-          max="10"
           inputPlaceholder="Preço"
           controlName="price"
           [formGroup]="formData"
+          maskInput="price"
         ></app-input-number>
 
         <app-input-text
@@ -24,22 +36,12 @@
           [formGroup]="formData"
         ></app-input-text>
 
-        <mat-form-field class="full-width">
-          <input
-            matInput
-            readonly
-            [matDatepicker]="picker"
-            placeholder="Data de nascimento"
-            name="birthDate"
-            formControlName="birthDate"
-            (click)="picker.open()"
-          />
-          <mat-datepicker-toggle
-            matSuffix
-            [for]="picker"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
+        <app-input-date
+          inputPlaceholder="Data de nascimento"
+          controlName="birthDate"
+          [formGroup]="formData"
+        ></app-input-date>
+
         <mat-form-field class="full-width">
           <textarea
             matInput
