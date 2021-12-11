@@ -13,11 +13,15 @@
     >
     <mat-error
       *ngIf="validationErrors.hasErrorValidate(formControl, 'minlength')"
-      >O campo deve ter no mínimo 3 caracteres</mat-error
+      >O campo deve ter no mínimo
+      {{ validationErrors.lengthValidation(formControl, "minlength") }}
+      caracteres</mat-error
     >
     <mat-error
       *ngIf="validationErrors.hasErrorValidate(formControl, 'maxlength')"
-      >O campo deve ter no máximo 30 caracteres</mat-error
+      >O campo deve ter no máximo
+      {{ validationErrors.lengthValidation(formControl, "maxlength") }}
+      caracteres</mat-error
     >
   </mat-form-field>
 </div>
