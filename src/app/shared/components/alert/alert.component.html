@@ -3,8 +3,20 @@
   <p>{{ descriptionModal }}</p>
 </div>
 <div mat-dialog-actions>
-  <button mat-button cdkFocusInitial [mat-dialog-close]="true">
+  <button
+    [color]="colorBtn"
+    mat-raised-button
+    cdkFocusInitial
+    [mat-dialog-close]="true"
+  >
     {{ btnSuccess }}
   </button>
-  <button mat-button [mat-dialog-close]="false">{{ btnCancel }}</button>
+  <button
+    color="warn"
+    mat-raised-button
+    [mat-dialog-close]="false"
+    *ngIf="isBtnClose"
+  >
+    {{ btnCancel }}
+  </button>
 </div>

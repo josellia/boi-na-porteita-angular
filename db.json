@@ -53,6 +53,15 @@
       "gender": "Macho",
       "price": 4,
       "id": 6
+    },
+    {
+      "breed": "qualquer coisa",
+      "photoUrl": "https://images.pexels.com/photos/3214973/pexels-photo-3214973.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "",
+      "birthDate": "2021-12-02T03:00:00.000Z",
+      "gender": "Macho",
+      "price": 25,
+      "id": 7
     }
   ]
 }
