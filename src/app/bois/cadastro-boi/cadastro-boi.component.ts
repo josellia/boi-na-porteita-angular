@@ -5,7 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { BoisService } from 'src/app/core/bois.service';
 import { ValidantionErrorsService } from 'src/app/shared/components/validators/validantion-errors.service';
+import { Boi } from 'src/app/shared/models/boi';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -15,11 +17,14 @@ import { ValidantionErrorsService } from 'src/app/shared/components/validators/v
 })
 export class CadastroBoiComponent implements OnInit {
   formData!: FormGroup;
-  genders!: Array<string>
-
+  genders!: Array<string>;
+  
+  public today: Date = new Date();
+  
   constructor(
     public validationErrors: ValidantionErrorsService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private boiService: BoisService
   ) {}
 
   get f(): { [key: string]: AbstractControl } {
@@ -40,14 +45,7 @@ export class CadastroBoiComponent implements OnInit {
       description: ['', [Validators.maxLength(200)]],
       birthDate: ['', [Validators.required]],
       gender: ['', [Validators.required]],
-      price: [
-        '',
-        [
-          Validators.required,
-          Validators.min(0),
-         
-        ],
-      ],
+      price: ['', [Validators.required, Validators.min(0)]],
     });
 
     this.genders = ['Fêmia', 'Macho'];
@@ -59,43 +57,24 @@ export class CadastroBoiComponent implements OnInit {
     if (this.formData.invalid) {
       return;
     }
-    alert(JSON.stringify(this.formData.value, null, 4));
+    
+    const boi = this.formData.getRawValue() as Boi;
+    console.log(boi);
+    this.saveCow(boi);
+
   }
   clearForm(): void {
     this.formData.reset();
   }
 
-  
-  currencyMask() {
-
-    const currencyControl: AbstractControl = this.formData?.controls['price'];
-    
-    let mask = currencyControl.value;
-    currencyControl?.valueChanges.subscribe((data) => {
-  
-     data =  data?.toLocaleString('pt-br', {
-        style: 'currency',
-        currency: 'BRL',
-      });
-     
-       mask = data;
-      console.log('VAUE',mask);
-      // this.formData.controls['price'].setValue(mask, {
-      //   emitEvent: false,
-      // });
-      // console.log(data);
-      return mask
-    });
-  }
-
-  teste(e: any){
-    console.log(e);
-  e.target.value.toLocaleString('pt-br', {
-      style: 'currency',
-      currency: 'BRL',
-    });
+  private saveCow(boi: Boi): void {
+    this.boiService.saveBoi(boi).subscribe(
+      () => {
+        alert('Save suscess');
+      },
+      () => {
+        alert('Error');
+      }
+    );
   }
 }
-// https://www.ti-enxame.com/pt/angular/mascara-para-uma-entrada/826048165/
-
-// TODO LIST: https://www.youtube.com/watch?v=NqsispG1Bv4

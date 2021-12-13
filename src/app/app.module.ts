@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoMaterialModule } from './shared/Material/material.module';
@@ -11,6 +11,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { NgxMaskModule } from 'ngx-mask';
 
 
+
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
   imports: [
@@ -19,7 +20,7 @@ import { NgxMaskModule } from 'ngx-mask';
     DemoMaterialModule,
     BoisModule,
     AppRoutingModule,
-    
+    HttpClientModule,
     NgxMaskModule.forRoot({
       dropSpecialCharacters: false // ao salvar, vai manter a mascara
     }),

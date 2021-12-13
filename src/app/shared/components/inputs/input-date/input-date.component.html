@@ -8,6 +8,8 @@
       [name]="controlName"
       [formControlName]="controlName"
       (click)="picker.open()"
+      min="1900-01-01"
+      [max]="maxDate"
     />
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>

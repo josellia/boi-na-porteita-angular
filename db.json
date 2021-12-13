@@ -1,14 +1,22 @@
 {
-    "cows": [
-        {
-           "breed": "Nelore",
-           "photoUrl": "https://images.pexels.com/photos/5669011/pexels-photo-5669011.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-           "description": "Nelore mocho ",
-           "gender": "Macho",
-           "birthDate": "19/08/2021",
-           "price": "300",
-           "id": 1
-
-        }
-    ]
+  "cows": [
+    {
+      "breed": "Nelore",
+      "photoUrl": "https://images.pexels.com/photos/5669011/pexels-photo-5669011.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "Nelore mocho ",
+      "gender": "Macho",
+      "birthDate": "19/08/2021",
+      "price": "300",
+      "id": 1
+    },
+    {
+      "breed": "nelore um",
+      "photoUrl": "https://images.pexels.com/photos/3214973/pexels-photo-3214973.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "Vaca leiteira",
+      "birthDate": "2021-12-09T03:00:00.000Z",
+      "gender": "Fêmia",
+      "price": 3,
+      "id": 2
+    }
+  ]
 }

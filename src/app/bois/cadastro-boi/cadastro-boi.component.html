@@ -46,6 +46,7 @@
           inputPlaceholder="Data de nascimento"
           controlName="birthDate"
           [formGroup]="formData"
+          maxDate="{{ today | date: 'yyyy-MM-dd' }}"
         ></app-input-date>
 
         <app-input-textarea

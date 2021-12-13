@@ -12,8 +12,12 @@ export class InputDateComponent {
   @Input() inputPlaceholder!:string;
   @Input() formGroup!: FormGroup;
   @Input() controlName!:string;
+  @Input() maxDate!:string;
 
-  constructor(public validationsErrors: ValidantionErrorsService ) { }
+ 
+  constructor(public validationsErrors: ValidantionErrorsService ) { 
+   
+  }
 
  get formControl(): AbstractControl{
    return this.formGroup.controls[this.controlName];
