@@ -63,6 +63,7 @@ export class CadastroBoiComponent implements OnInit {
     this.saveCow(boi);
 
   }
+  
   clearForm(): void {
     this.formData.reset();
   }
