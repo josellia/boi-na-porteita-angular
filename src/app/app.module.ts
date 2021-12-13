@@ -9,11 +9,12 @@ import { AppRoutingModule } from './app.routing.module';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { NgxMaskModule } from 'ngx-mask';
+import { AlertComponent } from './shared/components/alert/alert.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [AppComponent, HeaderComponent, AlertComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -26,6 +27,7 @@ import { NgxMaskModule } from 'ngx-mask';
     }),
   
   ],
+  entryComponents:[AlertComponent],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt' }],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

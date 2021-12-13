@@ -5,7 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { BoisService } from 'src/app/core/bois.service';
+import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
 import { ValidantionErrorsService } from 'src/app/shared/components/validators/validantion-errors.service';
 import { Boi } from 'src/app/shared/models/boi';
 
@@ -23,8 +25,9 @@ export class CadastroBoiComponent implements OnInit {
   
   constructor(
     public validationErrors: ValidantionErrorsService,
+    public dialog: MatDialog,
     private fb: FormBuilder,
-    private boiService: BoisService
+    private boiService: BoisService,
   ) {}
 
   get f(): { [key: string]: AbstractControl } {
@@ -63,19 +66,19 @@ export class CadastroBoiComponent implements OnInit {
     this.saveCow(boi);
 
   }
-  
+
   clearForm(): void {
     this.formData.reset();
   }
 
   private saveCow(boi: Boi): void {
-    this.boiService.saveBoi(boi).subscribe(
-      () => {
-        alert('Save suscess');
-      },
-      () => {
-        alert('Error');
-      }
-    );
-  }
+    this.boiService.saveBoi(boi).subscribe({
+     next: () => {
+      const dialogRef = this.dialog.open(AlertComponent)
+
+     },
+     error: () => {console.log('erro');}
+     
+    },
+    )}
 }

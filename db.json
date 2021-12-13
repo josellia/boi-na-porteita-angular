@@ -17,6 +17,42 @@
       "gender": "Fêmia",
       "price": 3,
       "id": 2
+    },
+    {
+      "breed": "Nelore mocho",
+      "photoUrl": "https://images.pexels.com/photos/4488405/pexels-photo-4488405.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "",
+      "birthDate": "2021-12-09T03:00:00.000Z",
+      "gender": "Macho",
+      "price": 5,
+      "id": 3
+    },
+    {
+      "breed": "Vaca comum",
+      "photoUrl": "https://images.pexels.com/photos/4731083/pexels-photo-4731083.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "",
+      "birthDate": "2021-12-03T03:00:00.000Z",
+      "gender": "Fêmia",
+      "price": 4,
+      "id": 4
+    },
+    {
+      "breed": "Vaca amarela",
+      "photoUrl": "https://images.pexels.com/photos/4731083/pexels-photo-4731083.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "",
+      "birthDate": "2021-11-03T03:00:00.000Z",
+      "gender": "Fêmia",
+      "price": 3,
+      "id": 5
+    },
+    {
+      "breed": "teste",
+      "photoUrl": "https://images.pexels.com/photos/4731083/pexels-photo-4731083.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "",
+      "birthDate": "2021-12-09T03:00:00.000Z",
+      "gender": "Macho",
+      "price": 4,
+      "id": 6
     }
   ]
 }
