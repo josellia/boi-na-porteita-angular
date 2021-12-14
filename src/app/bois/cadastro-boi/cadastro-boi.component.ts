@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { BoisService } from 'src/app/core/bois.service';
 import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
@@ -21,14 +22,15 @@ import { Boi } from 'src/app/shared/models/boi';
 export class CadastroBoiComponent implements OnInit {
   formData!: FormGroup;
   genders!: Array<string>;
-  
+
   public today: any = new Date();
-  
+
   constructor(
     public validationErrors: ValidantionErrorsService,
     public dialog: MatDialog,
     private fb: FormBuilder,
     private boiService: BoisService,
+    private router: Router
   ) {}
 
   get f(): { [key: string]: AbstractControl } {
@@ -53,8 +55,6 @@ export class CadastroBoiComponent implements OnInit {
     });
 
     this.genders = ['Fêmia', 'Macho'];
-    
-    
   }
 
   save(): void {
@@ -62,11 +62,10 @@ export class CadastroBoiComponent implements OnInit {
     if (this.formData.invalid) {
       return;
     }
-    
+
     const boi = this.formData.getRawValue() as Boi;
     console.log(boi);
     this.saveCow(boi);
-
   }
 
   clearForm(): void {
@@ -75,21 +74,32 @@ export class CadastroBoiComponent implements OnInit {
 
   private saveCow(boi: Boi): void {
     this.boiService.saveBoi(boi).subscribe({
-     next: () => {
-       const config = {
-         data: {
-          btnSuccess: 'Ir para a listagem',
-          btnCancel: 'Cadastrar novo bovino',
-          // colorBtnSucess: 'orange',
-          colorBtnCancel:'primary',
-          isBtnClose: true,
-         } as Alert
-       };
-      const dialogRef = this.dialog.open(AlertComponent, config)
-
-     },
-     error: () => {console.log('erro');}
-     
-    },
-    )}
+      next: () => {
+        const config = {
+          data: {
+            btnSuccess: 'Ir para a listagem',
+            btnCancel: 'Cadastrar novo bovino',
+            colorBtnCancel: 'primary',
+            isBtnClose: true,
+          } as Alert,
+        };
+        const dialogRef = this.dialog.open(AlertComponent, config);
+        dialogRef.afterClosed().subscribe((op: boolean) => {
+          op ? this.router.navigateByUrl('/bois') : this.clearForm();
+        });
+      },
+      error: () => {
+        const config = {
+          data: {
+            title: 'Erro ao salvar o registro',
+            btnSuccess: 'Fechar',
+            descriptionModal:
+              'Não conseguimos salvar seu registro, favor tentar novamente mais tarde',
+            colorBtnSucess: 'warn',
+          } as Alert,
+        };
+        this.dialog.open(AlertComponent, config);
+      },
+    });
+  }
 }
