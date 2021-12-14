@@ -3,6 +3,7 @@ export interface Alert {
   descriptionModal?: string;
   btnSuccess?: string;
   btnCancel?: string;
-  colorBtn?: string;
+  colorBtnSucess?: string;
+  colorBtnCancel?: string;
   isBtnClose?: boolean;
 }

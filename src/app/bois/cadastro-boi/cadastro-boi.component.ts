@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { BoisService } from 'src/app/core/bois.service';
 import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
 import { ValidantionErrorsService } from 'src/app/shared/components/validators/validantion-errors.service';
+import { Alert } from 'src/app/shared/models/alert';
 import { Boi } from 'src/app/shared/models/boi';
 
 @Component({
@@ -21,7 +22,7 @@ export class CadastroBoiComponent implements OnInit {
   formData!: FormGroup;
   genders!: Array<string>;
   
-  public today: Date = new Date();
+  public today: any = new Date();
   
   constructor(
     public validationErrors: ValidantionErrorsService,
@@ -53,6 +54,7 @@ export class CadastroBoiComponent implements OnInit {
 
     this.genders = ['Fêmia', 'Macho'];
     
+    
   }
 
   save(): void {
@@ -74,7 +76,16 @@ export class CadastroBoiComponent implements OnInit {
   private saveCow(boi: Boi): void {
     this.boiService.saveBoi(boi).subscribe({
      next: () => {
-      const dialogRef = this.dialog.open(AlertComponent)
+       const config = {
+         data: {
+          btnSuccess: 'Ir para a listagem',
+          btnCancel: 'Cadastrar novo bovino',
+          // colorBtnSucess: 'orange',
+          colorBtnCancel:'primary',
+          isBtnClose: true,
+         } as Alert
+       };
+      const dialogRef = this.dialog.open(AlertComponent, config)
 
      },
      error: () => {console.log('erro');}
