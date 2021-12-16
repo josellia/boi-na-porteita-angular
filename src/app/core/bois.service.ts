@@ -14,4 +14,8 @@ export class BoisService {
   saveBoi(boi:Boi):Observable<Boi>{
     return this.http.post<Boi>(apiUrl, boi)
   }
+
+  listar():Observable<Boi[]>{
+    return this.http.get<Boi[]>(apiUrl);
+  }
 }

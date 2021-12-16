@@ -98,6 +98,33 @@
       "gender": "Macho",
       "price": 3,
       "id": 11
+    },
+    {
+      "breed": "teste",
+      "photoUrl": "https://images.pexels.com/photos/4731083/pexels-photo-4731083.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "",
+      "birthDate": "2021-12-07T03:00:00.000Z",
+      "gender": "Macho",
+      "price": 4,
+      "id": 12
+    },
+    {
+      "breed": "dddd",
+      "photoUrl": "https://images.pexels.com/photos/3214973/pexels-photo-3214973.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "",
+      "birthDate": "2021-12-06T03:00:00.000Z",
+      "gender": "Macho",
+      "price": 2,
+      "id": 13
+    },
+    {
+      "breed": "teste de agora",
+      "photoUrl": "https://images.pexels.com/photos/4731083/pexels-photo-4731083.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": null,
+      "birthDate": "2021-12-04T03:00:00.000Z",
+      "gender": "Macho",
+      "price": 3,
+      "id": 14
     }
   ]
 }

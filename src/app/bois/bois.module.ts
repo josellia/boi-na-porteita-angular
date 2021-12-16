@@ -5,7 +5,8 @@ import { ListarBoisComponent } from './listar-bois/listar-bois.component';
 import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoMaterialModule } from '../shared/Material/material.module';
 import { InputsModule } from '../shared/components/inputs/inputs.module';
-import { InputMaskModule } from '@ngneat/input-mask';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import { InputMaskModule } from '@ngneat/input-mask';
     FormsModule, 
     DemoMaterialModule,
     InputsModule,
-    InputMaskModule.forRoot({ isAsync: true }),
+    InfiniteScrollModule
     
   ],
   providers:[{provide: DEFAULT_CURRENCY_CODE, useValue: 'BR'}]
