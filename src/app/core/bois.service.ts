@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Boi } from '../shared/models/boi';
@@ -15,7 +15,12 @@ export class BoisService {
     return this.http.post<Boi>(apiUrl, boi)
   }
 
-  listar():Observable<Boi[]>{
-    return this.http.get<Boi[]>(apiUrl);
+  listar(page:number, qtdPage: number):Observable<Boi[]>{
+
+    let httpParams = new HttpParams();
+    httpParams =  httpParams.set('_page', page.toString());
+    httpParams =  httpParams.set('_limit', qtdPage);
+
+    return this.http.get<Boi[]>(apiUrl, {params: httpParams});
   }
 }
