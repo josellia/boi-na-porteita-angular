@@ -1,4 +1,24 @@
 <mat-toolbar class="app-title">Bois cadastrados</mat-toolbar>
+<mat-card class="float-left margin10 list-filter">
+  <form autocomplete="off" novalidate [formGroup]="listFilter">
+    <div class="width50 float-left">
+      <app-input-text
+        controlName="breed"
+        [formGroup]="listFilter"
+        inputPlaceholder="Filtro raça"
+      ></app-input-text>
+    </div>
+    <div class="width50 float-left">
+      <app-input-select
+        controlName="gender"
+        inputPlaceholder="Filtro macho ou fêmea"
+        [formGroup]="listFilter"
+        [opcoes]="genders"
+      ></app-input-select>
+    </div>
+  </form>
+</mat-card>
+
 <div class="home-content" infiniteScroll (scrolled)="onScroll()">
   <mat-card class="home-card" *ngFor="let boi of bois">
     <mat-card-header>

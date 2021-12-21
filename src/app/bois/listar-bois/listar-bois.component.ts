@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { BoisService } from 'src/app/core/bois.service';
 import { Boi } from 'src/app/shared/models/boi';
 
@@ -11,10 +12,19 @@ export class ListarBoisComponent implements OnInit {
   readonly limit = 4;
   page = 0;
   bois: Boi[] = [];
+  listFilter!: FormGroup;
+  genders!: Array<string>;
 
-  constructor(private boisService: BoisService) {}
+  constructor(private boisService: BoisService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    this.listFilter = this.fb.group({
+      breed: [''],
+      gender: ['']
+    });
+
+   this.genders = ['Fêmia', 'Macho'];
+
     this.listBoi();
   }
   onScroll(): void {
