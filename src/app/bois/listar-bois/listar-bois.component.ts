@@ -58,6 +58,8 @@ export class ListarBoisComponent implements OnInit {
       this.reset()
     });
   }
+
+
   private reset():void {
     this.page = 0;
     this.bois = [];
