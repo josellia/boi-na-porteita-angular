@@ -1,5 +1,6 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component,  EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
+
 
 
 import { ValidantionErrorsService } from '../../validators/validantion-errors.service';
@@ -10,7 +11,7 @@ import { ValidantionErrorsService } from '../../validators/validantion-errors.se
   styleUrls: ['./input-number.component.css']
 })
 export class InputNumberComponent implements OnInit {
-  @Input() inputMask!: any;
+
   @Input() idInput!:string;
   @Input() inputPlaceholder!:string ;
   @Input() formGroup!: FormGroup;
@@ -18,21 +19,34 @@ export class InputNumberComponent implements OnInit {
   @Input() min!: string;
   @Input() max!:string;
   @Input() step!: string;
+
+ 
+  @Input() set maskInput(m: string) {
+    this.controlName = (m && m.toUpperCase())
+  }
+  @Output() mask: EventEmitter<string> = new EventEmitter<string>();
   
 
   constructor(public validationErrors:ValidantionErrorsService) { }
 
   ngOnInit(): void {
+   
   }
 
   get formControl(): AbstractControl{
     return this.formGroup.controls[this.controlName];
   }
 
-  get maskInput( ){
-    const mask: AbstractControl = this.formGroup.controls[this.controlName];
-    console.log(mask);
-   return  mask;
-
+  onMask():void {
+    const capture = this.formGroup.get('price')
+    const myMask =  capture?.value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+    this.mask.emit(myMask);
+    console.log(myMask);
   }
+  // ngOnDestroy() {
+  //   this.eventsSubscription.unsubscribe();
+  // }
+ 
 }
+
+// CANAL PARA BEHAVIOR SUBJECT https://www.youtube.com/c/JsWiz1/videos

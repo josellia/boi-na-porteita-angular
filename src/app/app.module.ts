@@ -8,7 +8,6 @@ import { BoisModule } from './bois/bois.module';
 import { AppRoutingModule } from './app.routing.module';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
-import { NgxMaskModule } from 'ngx-mask';
 import { AlertComponent } from './shared/components/alert/alert.component';
 
 
@@ -22,9 +21,7 @@ import { AlertComponent } from './shared/components/alert/alert.component';
     BoisModule,
     AppRoutingModule,
     HttpClientModule,
-    NgxMaskModule.forRoot({
-      dropSpecialCharacters: false // ao salvar, vai manter a mascara
-    }),
+    
   
   ],
   entryComponents:[AlertComponent],

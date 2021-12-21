@@ -24,6 +24,7 @@ export class CadastroBoiComponent implements OnInit {
   genders!: Array<string>;
 
   public today: any = new Date();
+  
 
   constructor(
     public validationErrors: ValidantionErrorsService,
@@ -55,6 +56,9 @@ export class CadastroBoiComponent implements OnInit {
     });
 
     this.genders = ['Fêmia', 'Macho'];
+
+    // const {price} = this.formData.value;
+    // console.log('Price in here ', price);
   }
 
   save(): void {
@@ -101,5 +105,11 @@ export class CadastroBoiComponent implements OnInit {
         this.dialog.open(AlertComponent, config);
       },
     });
+  }
+  maskInput(mask:any){
+  // let price =  this.formData.get('price');
+  //  price = mask;
+   mask.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+    
   }
 }
