@@ -4,6 +4,7 @@ import { BoisService } from 'src/app/core/bois.service';
 import { Boi } from 'src/app/shared/models/boi';
 
 import { debounceTime } from 'rxjs/operators';
+import { ConfigParams } from 'src/app/shared/models/config-params';
 
 @Component({
   selector: 'app-listar-bois',
@@ -11,57 +12,66 @@ import { debounceTime } from 'rxjs/operators';
   styleUrls: ['./listar-bois.component.scss'],
 })
 export class ListarBoisComponent implements OnInit {
-  readonly limit = 4;
-  page = 0;
-  breed!: string;
-  gender!: string;
+  config: ConfigParams = {
+    page: 0,
+    limit:4,
+    search: '',
+    field: {type: '', value: ''}
+  };
   bois: Boi[] = [];
   listFilter!: FormGroup;
   genders!: Array<string>;
-
 
   constructor(private boisService: BoisService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.listFilter = this.fb.group({
       breed: [''],
-      gender: ['']
+      gender: [''],
     });
 
     this.filters();
 
-   this.genders = ['Fêmia', 'Macho'];
+    this.genders = ['Fêmia', 'Macho'];
 
     this.listBoi();
   }
 
   onScroll(): void {
-    this.listBoi()
+    this.listBoi();
   }
 
   private listBoi(): void {
-    this.page++;
-    this.boisService.listar(this.page, this.limit, this.breed, this.gender).subscribe((bois: Boi[]) => {
-      this.bois.push(...bois);
-    });
+     this.config.page++;
+
+
+    this.boisService
+      .listar(this.config)
+      .subscribe((bois: Boi[]) => {
+        this.bois.push(...bois);
+      });
   }
 
   private filters() {
-    this.listFilter.get('breed')?.valueChanges.pipe(debounceTime(500))
-    .subscribe((val: string) => {
-      this.breed = val;
-      this.reset()
-    });
+    this.listFilter
+      .get('breed')
+      ?.valueChanges.pipe(debounceTime(500))
+      .subscribe((val: string) => {
+        this.config.search = val;
+        this.reset();
+      });
 
-    this.listFilter.get('gender')?.valueChanges.pipe(debounceTime(500)).subscribe((val: string) => {
-      this.gender = val;
-      this.reset()
-    });
+    this.listFilter
+      .get('gender')
+      ?.valueChanges.pipe(debounceTime(500))
+      .subscribe((val: string) => {
+        this.config.field = {type: 'gender', value: val};
+        this.reset();
+      });
   }
 
-
-  private reset():void {
-    this.page = 0;
+  private reset(): void {
+    this.config.page = 0;
     this.bois = [];
     this.listBoi();
   }
