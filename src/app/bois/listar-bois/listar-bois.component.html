@@ -2,19 +2,23 @@
 <mat-card class="float-left margin10 list-filter">
   <form autocomplete="off" novalidate [formGroup]="listFilter">
     <div class="width50 float-left">
-      <app-input-text
-        controlName="breed"
-        [formGroup]="listFilter"
-        inputPlaceholder="Filtro raça"
-      ></app-input-text>
+      <div class="padding10">
+        <app-input-text
+          controlName="breed"
+          [formGroup]="listFilter"
+          inputPlaceholder="Filtro raça"
+        ></app-input-text>
+      </div>
     </div>
     <div class="width50 float-left">
-      <app-input-select
-        controlName="gender"
-        inputPlaceholder="Filtro macho ou fêmea"
-        [formGroup]="listFilter"
-        [opcoes]="genders"
-      ></app-input-select>
+      <div class="padding10">
+        <app-input-select
+          controlName="gender"
+          inputPlaceholder="Filtro macho ou fêmea"
+          [formGroup]="listFilter"
+          [opcoes]="genders"
+        ></app-input-select>
+      </div>
     </div>
   </form>
 </mat-card>
