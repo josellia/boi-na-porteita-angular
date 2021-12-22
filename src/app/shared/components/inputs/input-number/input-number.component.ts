@@ -1,12 +1,18 @@
-import { Component,  EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AbstractControl, FormGroup } from '@angular/forms';
+import { Component,  EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
+import { AbstractControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { ValidantionErrorsService } from '../../validators/validantion-errors.service';
 
 @Component({
   selector: 'app-input-number',
   templateUrl: './input-number.component.html',
-  styleUrls: ['./input-number.component.css']
+  styleUrls: ['./input-number.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR, multi: true,
+      useExisting: forwardRef(() => InputNumberComponent)
+    }
+  ]
 })
 export class InputNumberComponent implements OnInit {
 
