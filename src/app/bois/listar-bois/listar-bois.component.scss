@@ -10,12 +10,19 @@
   }
 }
 .mat-card-image {
-  width: 100%;
+  width: 200px;
+  height: 268px;
   margin: auto;
   display: block;
-  height: 50%;
 }
 
+.break-line{
+  white-space: pre-line;
+}
+.text-template{
+  text-align: center;
+  
+}
 @media screen and (min-width: 525px) {
   .home-content {
     .home-card {

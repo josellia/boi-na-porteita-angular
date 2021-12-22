@@ -1,8 +1,6 @@
 import { Component,  EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
 
-
-
 import { ValidantionErrorsService } from '../../validators/validantion-errors.service';
 
 @Component({
@@ -20,17 +18,17 @@ export class InputNumberComponent implements OnInit {
   @Input() max!:string;
   @Input() step!: string;
 
- 
+
   @Input() set maskInput(m: string) {
     this.controlName = (m && m.toUpperCase())
   }
   @Output() mask: EventEmitter<string> = new EventEmitter<string>();
-  
+
 
   constructor(public validationErrors:ValidantionErrorsService) { }
 
   ngOnInit(): void {
-   
+
   }
 
   get formControl(): AbstractControl{
@@ -43,10 +41,15 @@ export class InputNumberComponent implements OnInit {
     this.mask.emit(myMask);
     console.log(myMask);
   }
+  // _handler(event: any) {
+
+  // }
   // ngOnDestroy() {
   //   this.eventsSubscription.unsubscribe();
   // }
- 
+
 }
 
 // CANAL PARA BEHAVIOR SUBJECT https://www.youtube.com/c/JsWiz1/videos
+
+// MASCARA :https://www.youtube.com/watch?v=9owiMs_09Fo
