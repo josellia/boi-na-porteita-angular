@@ -4,6 +4,6 @@ describe('CadastroBoiComponent', () => {
  it('Deve retornar o cadastro de um bovino', () => {
     cy.visit('/bois/cadastro');
     cy.url().should('includes', 'cadastro');
-    cy.get('[controlName="breed]"').type("breed")
+    cy.get('[controlName="breed"]').type("Nelore")
  })
 })
