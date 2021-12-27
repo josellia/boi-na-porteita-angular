@@ -1,4 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -12,6 +18,7 @@ import { AlertComponent } from 'src/app/shared/components/alert/alert.component'
 import { ValidantionErrorsService } from 'src/app/shared/components/validators/validantion-errors.service';
 import { Alert } from 'src/app/shared/models/alert';
 import { Boi } from 'src/app/shared/models/boi';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -20,18 +27,20 @@ import { Boi } from 'src/app/shared/models/boi';
   styleUrls: ['./cadastro-boi.component.scss'],
 })
 export class CadastroBoiComponent implements OnInit {
+  @ViewChild('preco') preco!: ElementRef;
+
   formData!: FormGroup;
   genders!: Array<string>;
 
-  public today: any = new Date();
-  
+  public today: Date = new Date();
 
   constructor(
     public validationErrors: ValidantionErrorsService,
     public dialog: MatDialog,
     private fb: FormBuilder,
     private boiService: BoisService,
-    private router: Router
+    private router: Router,
+    private currencyPipe: CurrencyPipe
   ) {}
 
   get f(): { [key: string]: AbstractControl } {
@@ -57,8 +66,25 @@ export class CadastroBoiComponent implements OnInit {
 
     this.genders = ['Fêmia', 'Macho'];
 
+    // let price =  this.formData.get('price');
     // const {price} = this.formData.value;
-    // console.log('Price in here ', price);
+
+    // use pipe to display currency
+    this.formData.valueChanges.subscribe((form) => {
+      if (form.price) {
+        this.formData.patchValue(
+          {
+            price: this.currencyPipe.transform(
+              form.price.replace(/\D/g, '').replace(/^0+/, ''),
+              'BRL',
+              'symbol',
+              '1.0-0'
+            ),
+          },
+          { emitEvent: false }
+        );
+      }
+    });
   }
 
   save(): void {
@@ -106,10 +132,5 @@ export class CadastroBoiComponent implements OnInit {
       },
     });
   }
-  maskInput(mask:any){
-  // let price =  this.formData.get('price');
-  //  price = mask;
-   mask.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-    
-  }
+
 }

@@ -23,9 +23,12 @@
   </form>
 </mat-card>
 
-<div class="home-content" infiniteScroll 
-(scrolled)="onScroll()" 
-*ngIf="bois.length; else notRegister">
+<div
+  class="home-content"
+  infiniteScroll
+  (scrolled)="onScroll()"
+  *ngIf="bois.length; else notRegister"
+>
   <mat-card class="home-card border-card" *ngFor="let boi of bois">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
@@ -39,12 +42,19 @@
     </mat-card-header>
     <img mat-card-image src="{{ boi.photoUrl }}" alt="Angular Material 7" />
     <mat-card-content>
-      <p class="break-line"  style="margin-top: 10px">
-        {{ boi.description || 'Nenhuma descrição sobre o animal!' }}
+      <p class="break-line" style="margin-top: 10px">
+        {{ boi.description || "Nenhuma descrição sobre o animal!" }}
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button color="accent" (click)="open()" mat-raised-button>OPEN</button>
+      <button
+        class="float-right"
+        color="accent"
+        (click)="open(boi.id)"
+        mat-raised-button
+      >
+        Ver mais
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>

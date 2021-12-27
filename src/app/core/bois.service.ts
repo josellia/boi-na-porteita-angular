@@ -24,4 +24,8 @@ export class BoisService {
 
     return this.http.get<Boi[]>(apiUrl, { params: configParams });
   }
+
+  viewCown(id: number): Observable<Boi>{
+    return this.http.get<Boi>(apiUrl + id);
+  }
 }

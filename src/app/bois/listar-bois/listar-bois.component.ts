@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BoisService } from 'src/app/core/bois.service';
 import { Boi } from 'src/app/shared/models/boi';
 
@@ -22,7 +23,11 @@ export class ListarBoisComponent implements OnInit {
   listFilter!: FormGroup;
   genders!: Array<string>;
 
-  constructor(private boisService: BoisService, private fb: FormBuilder) {}
+  constructor(
+    private boisService: BoisService,
+    private fb: FormBuilder,
+    private router: Router
+    ) {}
 
   ngOnInit(): void {
     this.listFilter = this.fb.group({
@@ -35,6 +40,10 @@ export class ListarBoisComponent implements OnInit {
     this.genders = ['Fêmia', 'Macho'];
 
     this.listBoi();
+  }
+
+  open(id:number):void {
+    this.router.navigateByUrl(`/bois/${id}`);
   }
 
   onScroll(): void {
@@ -75,5 +84,6 @@ export class ListarBoisComponent implements OnInit {
     this.bois = [];
     this.listBoi();
   }
-  open() {}
+
+
 }

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BoisModule } from './bois/bois.module';
 import { CadastroBoiComponent } from './bois/cadastro-boi/cadastro-boi.component';
 import { ListarBoisComponent } from './bois/listar-bois/listar-bois.component';
+import { ViewBoiComponent } from './bois/view-boi/view-boi.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,10 @@ const routes: Routes = [
         path: '',
         component: ListarBoisComponent
       },
+      // {
+      //   path: ':id',
+      //   component: ViewBoiComponent
+      // },
       {
         path: 'cadastro',
         component: CadastroBoiComponent,

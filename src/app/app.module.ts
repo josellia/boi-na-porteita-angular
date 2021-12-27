@@ -9,11 +9,12 @@ import { AppRoutingModule } from './app.routing.module';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { AlertComponent } from './shared/components/alert/alert.component';
+import { ListComponent } from './shared/components/list/list.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, AlertComponent],
+  declarations: [AppComponent, HeaderComponent, AlertComponent, ListComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

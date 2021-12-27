@@ -2,7 +2,6 @@
   <mat-form-field class="full-width">
     <input
       matInput
-      type="number"
       [step]="step"
       [min]="min"
       [max]="max"
@@ -10,9 +9,9 @@
       [name]="controlName"
       [formControlName]="controlName"
       [id]="idInput"
-      (keypress)="onMask()"
     />
     <!-- <input
+      #input
       matInput
       type="number"
       [step]="step"
@@ -22,8 +21,12 @@
       [name]="controlName"
       [formControlName]="controlName"
       [id]="idInput"
-    /> -->
+      (input)="maskMoney((guarda = $event))"
+      [disabled]="false"
+    />
+    {{ guarda }} -->
   </mat-form-field>
+
   <mat-error *ngIf="validationErrors.hasErrorValidate(formControl, 'required')"
     >O campo é obrigatório</mat-error
   >

@@ -5,5 +5,5 @@ export interface Boi {
     gender: string;
     birthDate: Date;
     price: number;
-    id?: string;
+    id: number;
 }
