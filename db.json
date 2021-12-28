@@ -82,15 +82,6 @@
       "id": 9
     },
     {
-      "breed": "12222228888888888",
-      "photoUrl": "https://images.pexels.com/photos/4731083/pexels-photo-4731083.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      "description": "",
-      "birthDate": "2021-12-04T03:00:00.000Z",
-      "gender": "Fêmia",
-      "price": 5,
-      "id": 10
-    },
-    {
       "breed": "kkkk",
       "photoUrl": "https://images.pexels.com/photos/3214973/pexels-photo-3214973.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "description": "",
@@ -134,15 +125,6 @@
       "gender": "Macho",
       "price": 25,
       "id": 15
-    },
-    {
-      "breed": "teste de inputs",
-      "photoUrl": "https://images.pexels.com/photos/3214973/pexels-photo-3214973.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      "description": "sssss",
-      "birthDate": "2021-12-22T03:00:00.000Z",
-      "gender": "Fêmia",
-      "price": 5,
-      "id": 16
     }
   ]
 }

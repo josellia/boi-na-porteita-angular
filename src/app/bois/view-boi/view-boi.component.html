@@ -1,3 +1,10 @@
+<mat-card>
+  <mat-card-actions class="btns">
+    <button color="accent" mat-raised-button>Editar</button>
+    <button color="warn" mat-raised-button (click)="del()">Excluir</button>
+  </mat-card-actions>
+</mat-card>
+
 <div class="container" *ngIf="boi; else notRegister">
   <div>
     <img class="image" [src]="boi?.photoUrl" [alt]="boi?.breed" />

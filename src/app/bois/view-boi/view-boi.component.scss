@@ -1,9 +1,14 @@
+.btns {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin-top: -1rem;
+  margin-top: -35px;
 }
 
 .image {
@@ -11,9 +16,11 @@
   width: 60%;
   height: 30%;
   object-fit: cover;
+  border-radius: 20%;
 }
 
 .mat-list-item {
   text-transform: capitalize;
-  color: #8ae96f;
+  color: #fff;
+  border: 1px solid #8ae96f;
 }

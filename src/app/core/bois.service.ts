@@ -28,4 +28,9 @@ export class BoisService {
   viewCown(id: number): Observable<Boi>{
     return this.http.get<Boi>(apiUrl + id);
   }
+
+  // Does not return anything, it will delete, there are no more records to show
+  delCown(id: number): Observable<void>{
+    return this.http.delete<void>(apiUrl + id);
+  }
 }
