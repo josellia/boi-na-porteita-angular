@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-top: -1rem;
+}
+
+.image {
+  margin-top: 1rem;
+  width: 60%;
+  height: 30%;
+  object-fit: cover;
+}
+
+.mat-list-item {
+  text-transform: capitalize;
+  color: #8ae96f;
+}

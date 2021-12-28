@@ -20,15 +20,17 @@ const routes: Routes = [
         path: '',
         component: ListarBoisComponent
       },
-      // {
-      //   path: ':id',
-      //   component: ViewBoiComponent
-      // },
+
       {
         path: 'cadastro',
         component: CadastroBoiComponent,
         pathMatch: 'full'
-      }
+      },
+      {
+        path: ':id',
+        component: ViewBoiComponent,
+        pathMatch: 'full'
+      },
     ]
   },
   { path: '**', redirectTo: 'filmes' },

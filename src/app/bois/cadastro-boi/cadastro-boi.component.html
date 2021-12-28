@@ -15,7 +15,6 @@
         ></app-input-text>
 
         <!-- <input
-          #preco
           step="0.1"
           min="0"
           max="10"
@@ -23,21 +22,9 @@
           placeholder="Preço teste"
           name="price"
           formControlName="price"
+          [value]="formData.get('price')?.value | currency: 'BRL'"
         /> -->
 
-        <!-- <mat-form-field class="full-width">
-          <input
-            type="number"
-            step="0.1"
-            min="0"
-            max="10"
-            matInput
-            placeholder="Preço teste"
-            name="price"
-            formControlName="price"
-            (change)="teste($event)"
-          />
-        </mat-form-field> -->
         <app-input-number
           min="0"
           max="20000000000"

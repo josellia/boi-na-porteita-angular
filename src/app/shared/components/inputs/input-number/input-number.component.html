@@ -3,8 +3,8 @@
     <input
       matInput
       [step]="step"
-      [min]="min"
-      [max]="max"
+      [minlength]="min"
+      [maxlength]="max"
       [placeholder]="inputPlaceholder"
       [name]="controlName"
       [formControlName]="controlName"
@@ -30,12 +30,12 @@
   <mat-error *ngIf="validationErrors.hasErrorValidate(formControl, 'required')"
     >O campo é obrigatório</mat-error
   >
-  <mat-error *ngIf="validationErrors.hasErrorValidate(formControl, 'min')"
+  <mat-error *ngIf="validationErrors.hasErrorValidate(formControl, 'minlength')"
     >O campo deve ter no mínimo
-    {{ validationErrors.lengthValidation(formControl, "min") }}</mat-error
+    {{ validationErrors.lengthValidation(formControl, "minlength") }}</mat-error
   >
-  <mat-error *ngIf="validationErrors.hasErrorValidate(formControl, 'max')"
+  <mat-error *ngIf="validationErrors.hasErrorValidate(formControl, 'maxlength')"
     >O campo deve ter no máximo
-    {{ validationErrors.lengthValidation(formControl, "max") }}
+    {{ validationErrors.lengthValidation(formControl, "maxlength") }}
   </mat-error>
 </div>

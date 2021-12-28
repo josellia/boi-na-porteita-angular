@@ -55,8 +55,7 @@ export class InputNumberComponent implements OnInit, ControlValueAccessor {
   constructor(public validationErrors:ValidantionErrorsService) { }
 
   ngOnInit(): void {
-    const {price} = this.formGroup.value;
-    console.log('Chega', price);
+
   }
 
   get formControl(): AbstractControl{

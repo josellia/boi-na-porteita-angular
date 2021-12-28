@@ -1,1 +1,20 @@
-<p>view-boi works!</p>
+<div class="container">
+  <div>
+    <img class="image" [src]="boi?.photoUrl" [alt]="boi?.breed" />
+  </div>
+
+  <mat-list role="list">
+    <mat-list-item role="listitem">Raça: {{ boi?.breed }}</mat-list-item>
+    <mat-list-item role="listitem"
+      >Data nascimento: {{ boi?.birthDate | date: "dd-MM-YYYY" }}</mat-list-item
+    >
+    <mat-list-item role="listitem">Gênero: {{ boi?.gender }}</mat-list-item>
+    <mat-list-item role="listitem"
+      >Preço: {{ boi?.price | currency: "BRL" }}</mat-list-item
+    >
+
+    <mat-list-item role="listitem">
+      Descrição: {{ boi?.description ? boi?.description : "-" }}</mat-list-item
+    >
+  </mat-list>
+</div>

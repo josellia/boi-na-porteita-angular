@@ -20,6 +20,7 @@ import { Alert } from 'src/app/shared/models/alert';
 import { Boi } from 'src/app/shared/models/boi';
 import { CurrencyPipe } from '@angular/common';
 
+
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-cadastro-boi',
@@ -40,7 +41,8 @@ export class CadastroBoiComponent implements OnInit {
     private fb: FormBuilder,
     private boiService: BoisService,
     private router: Router,
-    private currencyPipe: CurrencyPipe
+    private currencyPipe: CurrencyPipe,
+
   ) {}
 
   get f(): { [key: string]: AbstractControl } {
@@ -61,15 +63,16 @@ export class CadastroBoiComponent implements OnInit {
       description: ['', [Validators.maxLength(200)]],
       birthDate: ['', [Validators.required]],
       gender: ['', [Validators.required]],
-      price: ['', [Validators.required, Validators.min(0)]],
+      price: ['', [Validators.required, Validators.minLength(0)]],
     });
 
     this.genders = ['Fêmia', 'Macho'];
 
     // let price =  this.formData.get('price');
-    // const {price} = this.formData.value;
+   // const {price} = this.formData.value;
 
     // use pipe to display currency
+
     this.formData.valueChanges.subscribe((form) => {
       if (form.price) {
         this.formData.patchValue(
