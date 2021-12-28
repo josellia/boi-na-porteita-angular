@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="boi; else notRegister">
   <div>
     <img class="image" [src]="boi?.photoUrl" [alt]="boi?.breed" />
   </div>
@@ -6,7 +6,7 @@
   <mat-list role="list">
     <mat-list-item role="listitem">Raça: {{ boi?.breed }}</mat-list-item>
     <mat-list-item role="listitem"
-      >Data nascimento: {{ boi?.birthDate | date: "dd-MM-YYYY" }}</mat-list-item
+      >Data nascimento: {{ boi?.birthDate | date: "dd/MM/YYYY" }}</mat-list-item
     >
     <mat-list-item role="listitem">Gênero: {{ boi?.gender }}</mat-list-item>
     <mat-list-item role="listitem"
@@ -18,3 +18,7 @@
     >
   </mat-list>
 </div>
+
+<ng-template #notRegister>
+  <h3 class="text-template">Nenhum registro encontrado</h3>
+</ng-template>

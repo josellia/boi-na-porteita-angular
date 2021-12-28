@@ -16,13 +16,10 @@
   display: block;
 }
 
-.break-line{
+.break-line {
   white-space: pre-line;
 }
-.text-template{
-  text-align: center;
-  
-}
+
 @media screen and (min-width: 525px) {
   .home-content {
     .home-card {
