@@ -55,7 +55,7 @@ export class CadastroBoiComponent implements OnInit {
 
     if (this.id) {
       this.boiService.viewCown(this.id).subscribe((boi: Boi) => {
-        console.log(boi);
+
         this.createForm(boi);
       });
     } else {
