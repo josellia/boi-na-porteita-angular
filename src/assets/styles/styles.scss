@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  
+  background-color:#303030;
 }
 
 .center {
@@ -50,5 +50,8 @@ body {
 .text-template{
   text-align: center;
 
-  
+}
+
+.break-line {
+  white-space: pre-line;
 }

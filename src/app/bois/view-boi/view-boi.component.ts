@@ -48,6 +48,9 @@ export class ViewBoiComponent implements OnInit {
     });
   }
 
+edit(): void{
+  this.router.navigateByUrl(`/bois/cadastro/${this.id}`);
+}
   private view(): void {
     this.boisService.viewCown(this.id).subscribe((boi: Boi) => {
       this.boi = boi;

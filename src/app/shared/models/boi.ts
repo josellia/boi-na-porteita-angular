@@ -3,7 +3,7 @@ export interface Boi {
     photoUrl: string;
     description?: string;
     gender: string;
-    birthDate: Date;
+    birthDate: string;
     price: number;
-    id: number;
+    id?: number;
 }

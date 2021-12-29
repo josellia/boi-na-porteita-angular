@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-actions class="btns">
-    <button color="accent" mat-raised-button>Editar</button>
+    <button color="accent" mat-raised-button (click)="edit()">Editar</button>
     <button color="warn" mat-raised-button (click)="del()">Excluir</button>
   </mat-card-actions>
 </mat-card>
@@ -20,7 +20,7 @@
       >Preço: {{ boi?.price | currency: "BRL" }}</mat-list-item
     >
 
-    <mat-list-item role="listitem">
+    <mat-list-item class="break-line" role="listitem">
       Descrição: {{ boi?.description ? boi?.description : "-" }}</mat-list-item
     >
   </mat-list>

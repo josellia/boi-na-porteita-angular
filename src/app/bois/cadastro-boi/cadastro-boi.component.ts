@@ -11,7 +11,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { BoisService } from 'src/app/core/bois.service';
 import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
@@ -19,7 +19,6 @@ import { ValidantionErrorsService } from 'src/app/shared/components/validators/v
 import { Alert } from 'src/app/shared/models/alert';
 import { Boi } from 'src/app/shared/models/boi';
 import { CurrencyPipe } from '@angular/common';
-
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -32,6 +31,7 @@ export class CadastroBoiComponent implements OnInit {
 
   formData!: FormGroup;
   genders!: Array<string>;
+  id!: number;
 
   public today: Date = new Date();
 
@@ -42,7 +42,7 @@ export class CadastroBoiComponent implements OnInit {
     private boiService: BoisService,
     private router: Router,
     private currencyPipe: CurrencyPipe,
-
+    private activateRoute: ActivatedRoute
   ) {}
 
   get f(): { [key: string]: AbstractControl } {
@@ -50,29 +50,27 @@ export class CadastroBoiComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.formData = this.fb.group({
-      breed: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(30),
-        ],
-      ],
-      photoUrl: ['', [Validators.required, Validators.minLength(10)]],
-      description: ['', [Validators.maxLength(200)]],
-      birthDate: ['', [Validators.required]],
-      gender: ['', [Validators.required]],
-      price: ['', [Validators.required, Validators.minLength(0)]],
-    });
-
     this.genders = ['Fêmia', 'Macho'];
+    this.id = this.activateRoute.snapshot.params['id'];
+
+    if (this.id) {
+      this.boiService.viewCown(this.id).subscribe((boi: Boi) => {
+        console.log(boi);
+        this.createForm(boi);
+      });
+    } else {
+      this.createForm(this.createCownEmpty());
+    }
+
+    this.mask();
 
     // let price =  this.formData.get('price');
-   // const {price} = this.formData.value;
+    // const {price} = this.formData.value;
 
     // use pipe to display currency
+  }
 
+  mask() {
     this.formData.valueChanges.subscribe((form) => {
       if (form.price) {
         this.formData.patchValue(
@@ -89,20 +87,53 @@ export class CadastroBoiComponent implements OnInit {
       }
     });
   }
-
-  save(): void {
+  submit(): void {
     this.formData.markAllAsTouched();
     if (this.formData.invalid) {
       return;
     }
 
     const boi = this.formData.getRawValue() as Boi;
-    console.log(boi);
-    this.saveCow(boi);
+    if (this.id) {
+      boi.id = this.id;
+      this.editCow(boi);
+    } else {
+      this.saveCow(boi);
+    }
   }
 
   clearForm(): void {
     this.formData.reset();
+  }
+
+  private createForm(boi: Boi): void {
+    this.formData = this.fb.group({
+      breed: [
+        boi.breed,
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(30),
+        ],
+      ],
+      photoUrl: [boi.photoUrl, [Validators.required, Validators.minLength(10)]],
+      description: [boi.description, [Validators.maxLength(200)]],
+      birthDate: [boi.birthDate, [Validators.required]],
+      gender: [boi.gender, [Validators.required]],
+      price: [boi.price, [Validators.required, Validators.minLength(0)]],
+    });
+  }
+
+  private createCownEmpty(): Boi {
+    return {
+      breed: '',
+      photoUrl: '',
+      description: '',
+      birthDate: '',
+      gender: '',
+      price: 0,
+      id: 0,
+    } as Boi;
   }
 
   private saveCow(boi: Boi): void {
@@ -136,4 +167,32 @@ export class CadastroBoiComponent implements OnInit {
     });
   }
 
+  private editCow(boi: Boi): void {
+    this.boiService.editBoi(boi).subscribe({
+      next: () => {
+        const config = {
+          data: {
+            descriptionModal: 'Seu registro foi atualizado com sucesso',
+            btnSuccess: 'Ir para a listagem',
+          } as Alert,
+        };
+        const dialogRef = this.dialog.open(AlertComponent, config);
+        dialogRef
+          .afterClosed()
+          .subscribe(() => this.router.navigateByUrl('/bois'));
+      },
+      error: () => {
+        const config = {
+          data: {
+            title: 'Erro ao editar o registro',
+            btnSuccess: 'Fechar',
+            descriptionModal:
+              'Não conseguimos editar seu registro, favor tentar novamente mais tarde',
+            colorBtnSucess: 'warn',
+          } as Alert,
+        };
+        this.dialog.open(AlertComponent, config);
+      },
+    });
+  }
 }

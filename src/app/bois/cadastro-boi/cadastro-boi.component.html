@@ -1,11 +1,12 @@
 <mat-toolbar class="app-title">Cadastrar boi</mat-toolbar>
 <div class="main-div">
-  <mat-card class="center width50">
+  <mat-card class="center width50" *ngIf="formData">
     <form
       autocapitalize="off"
       novalidate
       [formGroup]="formData"
-      (ngSubmit)="save()"
+      (ngSubmit)="submit()"
+      (ngReset)="clearForm()"
     >
       <mat-card-content>
         <app-input-text
@@ -62,14 +63,7 @@
 
       <mat-card-actions class="float-right">
         <button type="submit" color="accent" mat-raised-button>Salvar</button>
-        <button
-          type="reset"
-          (click)="clearForm()"
-          color="warn"
-          mat-raised-button
-        >
-          Cancelar
-        </button>
+        <button type="reset" color="warn" mat-raised-button>Cancelar</button>
       </mat-card-actions>
     </form>
   </mat-card>

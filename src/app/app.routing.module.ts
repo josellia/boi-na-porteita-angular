@@ -5,43 +5,46 @@ import { CadastroBoiComponent } from './bois/cadastro-boi/cadastro-boi.component
 import { ListarBoisComponent } from './bois/listar-bois/listar-bois.component';
 import { ViewBoiComponent } from './bois/view-boi/view-boi.component';
 
-
 const routes: Routes = [
-
   {
-      path: '',
-      redirectTo: 'bois',
-      pathMatch: 'full'
+    path: '',
+    redirectTo: 'bois',
+    pathMatch: 'full',
   },
   {
     path: 'bois',
     children: [
       {
         path: '',
-        component: ListarBoisComponent
+        component: ListarBoisComponent,
       },
 
       {
         path: 'cadastro',
-        component: CadastroBoiComponent,
-        pathMatch: 'full'
+        children: [
+          {
+            path: '',
+            component: CadastroBoiComponent,
+          },
+          {
+            path: ':id',
+            component: CadastroBoiComponent,
+
+          },
+        ],
       },
       {
         path: ':id',
         component: ViewBoiComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
       },
-    ]
+    ],
   },
   { path: '**', redirectTo: 'filmes' },
-
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes),
-    BoisModule
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes), BoisModule],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

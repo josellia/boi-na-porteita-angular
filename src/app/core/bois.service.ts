@@ -19,6 +19,9 @@ export class BoisService {
     return this.http.post<Boi>(apiUrl, boi);
   }
 
+ editBoi(boi: Boi): Observable<Boi> {
+    return this.http.put<Boi>(apiUrl + boi.id, boi);
+  }
   listar(config: ConfigParams): Observable<Boi[]> {
     const configParams = this.configParamsService.configParams(config);
 
